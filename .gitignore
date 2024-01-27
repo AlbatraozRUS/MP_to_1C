@@ -1,0 +1,5 @@
+screenshot.png
+__pycache__/**
+venv/**
+dist/**
+*.spec

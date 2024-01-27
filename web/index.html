@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript" src="/eel.js"></script>
+        <title>Автозаполнитель МП в 1С</title>
+        <link rel="stylesheet" type="text/css" href="styles.css">
+    </head>
+    <body>
+
+        <div class="container">
+            <div class="top-section">
+                <button onclick="fill1C()" class="half-width">Начать
+                    автозаполнение</button>
+                <button onclick="setupCoords()" class="half-width">Настройка
+                    координат</button>
+            </div>
+
+            <div class="bottom-section">
+                <div class="progress-bar-container">
+                    <progress id="progressBar" max="100" value="0"></progress>
+                    <div class="percentage-counter" id="percentageCounter">0
+                        (0%)</div>
+                </div>
+                <div class="logs-label">Логи</div>
+                <textarea id="output" spellcheck="false" readonly></textarea>
+            </div>
+        </div>
+
+        <div class="signature">
+            Made by: AlbatraozRUS (Искандер)<br>
+            Contact: <a href="https://t.me/AlbatraozRUS" target="_blank">Telegram</a>
+            <br>
+            2024
+        </div>
+
+        <script src="scripts.js"></script>
+    </body>
+</html>
