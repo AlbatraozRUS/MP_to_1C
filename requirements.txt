@@ -5,3 +5,4 @@ eel
 Pillow
 pynput
 openpyxl
+google-api-python-client

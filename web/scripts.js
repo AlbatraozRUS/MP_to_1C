@@ -1,4 +1,8 @@
 async function setupCoords() {
+	if (!await checkLicense()) {
+		return;
+	}
+
 	let confirmText = "Будет произведена настройка координат.\n\n" +
 		"Пожалуйста, откройте окно 1С, чтобы оно занимало приблизительно " +
 		"половину экрана, откройте в нем раздел " +
@@ -17,6 +21,10 @@ async function setupCoords() {
 }
 
 async function fill1C() {
+	if (!await checkLicense()) {
+		return;
+	}
+
 	if (await eel.check_setup_py()() == false) {
 		return;
 	}
@@ -39,6 +47,27 @@ async function fill1C() {
 	await eel.fill_1C_py(filePath)();
 
 	progressBarContainer.style.display = 'none';
+}
+
+async function checkLicense() {
+	if (await eel.check_active_license_py()()) {
+		return true;
+	}
+
+	const license_key = window.prompt("Введите лицензионный ключ");
+	if (!license_key) {
+		alert("Необходимо ввести лицензионный ключ!");
+		return false;
+	}
+
+	if (await eel.check_license_py(license_key)()) {
+		alert("Лицензионный ключ подтвержден!");
+		return true;
+	}
+	else {
+		alert("Лицензионный ключ неверный!");
+		return false;
+	}
 }
 
 eel.expose(addText);

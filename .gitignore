@@ -3,3 +3,5 @@ __pycache__/**
 venv/**
 dist/**
 *.spec
+drive_token.json
+MP_to_1C.exe

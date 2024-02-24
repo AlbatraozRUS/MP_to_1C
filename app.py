@@ -14,6 +14,7 @@ import traceback
 import eel
 
 from backend import MP_Filler, ParsingException
+from check_license import LicenseGDriveChecker
 
 MPF = None
 
@@ -72,6 +73,18 @@ def setup_coordinates_py():
 					"отображается ли окно 1C и попробуйте еще раз!\n\n")
 		eel.addText(f"Информация об ошибке:\n{error}\n")
 		eel.addText(traceback.format_exc())
+
+
+@eel.expose
+def check_license_py(license_key):
+	lgc = LicenseGDriveChecker()
+	return lgc.check_license(license_key)
+
+
+@eel.expose
+def check_active_license_py():
+	lgc = LicenseGDriveChecker()
+	return lgc.check_active_license()
 
 
 #------------------ MAIN ------------------#
